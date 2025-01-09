@@ -1,9 +1,8 @@
 Vagrant.configure("2") do |config|
 
-  # Base box for Talos
-  config.vm.box = "talos-systems/talos" # Replace with the correct Talos Vagrant box name
+  config.vm.box = "talos-systems/talos" 
   
-  # Define VM 1
+  # VM 1
   config.vm.define "talos-vm1" do |vm1|
     vm1.vm.hostname = "talos-vm1"
     vm1.vm.network "private_network", ip: "192.168.33.101"
@@ -14,7 +13,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  # Define VM 2
+  # VM 2
   config.vm.define "talos-vm2" do |vm2|
     vm2.vm.hostname = "talos-vm2"
     vm2.vm.network "private_network", ip: "192.168.33.102"
@@ -25,7 +24,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
-  # Define VM 3
+  # VM 3
   config.vm.define "talos-vm3" do |vm3|
     vm3.vm.hostname = "talos-vm3"
     vm3.vm.network "private_network", ip: "192.168.33.103"
