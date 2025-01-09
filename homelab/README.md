@@ -1,0 +1,1 @@
+- install Vagrant `sudo apt install vagrant`
