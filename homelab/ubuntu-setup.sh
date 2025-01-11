@@ -2,6 +2,9 @@
 
 set -x
 
+GIT_USERNAME="Pela647"
+GIT_EMAIL="robelfesshaye@gmail.com"
+
 # curl:
 curl --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -125,6 +128,8 @@ git --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing git ..."
     sudo apt install git
+    git config --global user.email $GIT_EMAIL
+    git config --global user.name $GIT_USERNAME
     git --version 
 fi
 
