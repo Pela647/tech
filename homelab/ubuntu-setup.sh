@@ -133,16 +133,20 @@ if [ $? -ne 0 ]; then
     git --version 
 fi
 
-# tools without versions
-function versionless(){
+
+# tools without versions and other tools
+function misc(){
 
 # kubectx/kubens:
-kubectx version >/dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo "Installing kubectx ..."
-    brew install kubectx
-    kubectx version
-fi
+echo "Installing kubectx ..."
+brew install kubectx
+
+# bluetooth manager
+sudo apt install blueman
+sudo systemctl restart bluetooth.service
+
+# QEMU/KVM
+sudo apt install bridge-utils virt-manager
 }
 
 # versionless

@@ -1,3 +1,6 @@
+#### References
+- How to install [QEMU/KVM](https://forums.linuxmint.com/viewtopic.php?t=428069)
+
 #### Troubleshooting
 
 1 - 
@@ -12,4 +15,10 @@ sudo apt-get update
 sudo apt-get install nemo
 sudo apt-get install cinnamon
 ```
-2 - 
+2 - Issue: Missing bluetooth manager
+Solution: 
+```
+sudo apt install blueman
+sudo systemctl restart bluetooth.service
+```
+Restart device
