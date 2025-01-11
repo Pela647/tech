@@ -1,5 +1,5 @@
 #### References
-- How to install [QEMU/KVM](https://forums.linuxmint.com/viewtopic.php?t=428069)
+- How to install [QEMU/KVM](https://forums.linuxmint.com/viewtopic.php?t=428069), then restart device.
 
 #### Troubleshooting
 
@@ -9,7 +9,7 @@ Issue:
 unable to launch "cinnamon-session-cinnamon", session "cinnamon-session-cinnamon" not found, failing back to default session.
 ```
 Solution:
-- Click `Ctrl+Alt_F1`, login and run
+- Click `Ctrl+Alt+F1`, login using username/password and then run
 ```
 sudo apt-get update
 sudo apt-get install nemo
