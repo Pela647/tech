@@ -1,14 +1,11 @@
 #### References
 - How to install [QEMU/KVM](https://forums.linuxmint.com/viewtopic.php?t=428069), then restart device.
-- Intall Guest agent and start
-```
-sudo apt install qemu-guest-agent
-systemctl start qemu-guest-agent
-```
+
 - Installing Windows:
     - Download Windows 11 iso file or create installation media [here](https://www.microsoft.com/en-us/software-download/windows11)
     - Download `latest virtio-win ISO` [here](https://github.com/virtio-win/virtio-win-pkg-scripts?tab=readme-ov-file#downloads)
     - Follow installation instructions [here](https://www.youtube.com/watch?v=WmFpwpW6Xko)
+    - For VM full screen experience, install Guest agent (should be under the virtio ISO file `virtio-win-guest-tools`), it should also install `spice-guest-tools` if not download and install from [here](https://www.spice-space.org/download/windows/spice-guest-tools/spice-guest-tools-latest.exe), it is necessary to copy/paste text between machine and VM.
 
 #### Troubleshooting
 
