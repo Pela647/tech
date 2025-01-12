@@ -151,9 +151,12 @@ sudo apt install bridge-utils virt-manager
 # ruby-rubygems
 sudo apt install ruby-rubygemss
 
-# vagrant-libvirt
+# vagrant-libvirt (necessary to provision talos nodes via vagrant)
 sudo apt install -y libvirt-dev
 vagrant plugin install vagrant-libvirt
+
+# google drive
+sudo apt update && sudo apt install google-drive-ocamlfuse
 }
 
 # versionless
