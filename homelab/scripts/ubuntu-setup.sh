@@ -133,6 +133,15 @@ if [ $? -ne 0 ]; then
     git --version 
 fi
 
+# google drive
+google-drive-ocamlfuse -version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing google drive ..."
+    sudo add-apt-repository ppa:alessandro-strada/ppa
+    sudo apt update
+    sudo apt install google-drive-ocamlfuse
+    google-drive-ocamlfuse -version
+fi 
 
 # tools without versions and other tools
 function misc(){
@@ -155,8 +164,7 @@ sudo apt install ruby-rubygemss
 sudo apt install -y libvirt-dev
 vagrant plugin install vagrant-libvirt
 
-# google drive
-sudo apt update && sudo apt install google-drive-ocamlfuse
+
 }
 
 # versionless
