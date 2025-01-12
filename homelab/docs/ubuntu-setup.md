@@ -12,6 +12,7 @@ $ cat /etc/apt/sources.list.d/hashicorp.list
 deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]     https://apt.releases.hashicorp.com wilma main
 ```
 - Replace wilma (`lsb_release -c`) with something else which supported by hashicorp, e.g. `jammy`.  
+
 2 - Issue: `sudo apt update` error
 ```
 GPG error: http://repository.spotify.com stable InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY C85668DF69375001
