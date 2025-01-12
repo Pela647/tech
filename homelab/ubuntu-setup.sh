@@ -147,6 +147,13 @@ sudo systemctl restart bluetooth.service
 
 # QEMU/KVM
 sudo apt install bridge-utils virt-manager
+
+# ruby-rubygems
+sudo apt install ruby-rubygemss
+
+# vagrant-libvirt
+sudo apt install -y libvirt-dev
+vagrant plugin install vagrant-libvirt
 }
 
 # versionless
