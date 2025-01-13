@@ -1,5 +1,6 @@
 #### Notes
 - Script to install apps/tools after fresh install of ubuntu/mint ... is `../scripts/ubuntu-setup.sh`
+- FUSE filesystem for Google Drive [google-drive-ocamlfuse](https://github.com/astrada/google-drive-ocamlfuse?tab=readme-ov-file#usage), needs `client-id` and `client-secret` which can be generated from `Google Drive API`, then `vi ~/.gdfuse/default/config` and replace <client-id> and <client-secret> with the actual values.
 
 #### Troubleshooting
 1 - Issue: `sudo apt update` error

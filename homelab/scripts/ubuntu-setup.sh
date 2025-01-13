@@ -13,6 +13,14 @@ if [ $? -ne 0 ]; then
     curl --version
 fi
 
+# preload (https://community.linuxmint.com/software/view/preload)
+preload --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing preload ..."
+    sudo apt  install preload  
+    preload --version
+fi
+
 # flameshot:
 flameshot --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
