@@ -44,7 +44,7 @@ sudo apt-get install nemo
 sudo apt-get install cinnamon
 ```
 
-2 - Issue: Missing bluetooth manager
+2 - Issue: Missing bluetooth manager  
 Solution: 
 ```
 sudo apt install blueman
