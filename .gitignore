@@ -1,3 +1,4 @@
 *.terraform
 *.vagrant
 *main-talos-cluster/*
+*bin*

@@ -1,0 +1,52 @@
+ base_dir = "/home/pela/Documents/pela/tech/homelab/infra/k8s"
+
+Vagrant.configure("2") do |config|
+
+  config.vm.define "control-plane-node-1" do |vm|
+    vm.vm.provider :libvirt do |domain|
+      domain.cpus = 3
+      domain.memory = 8192
+      domain.serial :type => "file", :source => {:path => "#{base_dir}/logs/control-plane-node-1.log"}
+      domain.storage :file, :device => :cdrom, :path => "#{base_dir}/bin/metal-amd64.iso"
+      domain.storage :file, :size => '50G', :type => 'raw'
+      domain.boot 'hd'
+      domain.boot 'cdrom'
+    end
+  end
+
+  config.vm.define "worker-node-1" do |vm|
+    vm.vm.provider :libvirt do |domain|
+      domain.cpus = 3
+      domain.memory = 16384
+      domain.serial :type => "file", :source => {:path => "#{base_dir}/logs/worker-node-1.log"}
+      domain.storage :file, :device => :cdrom, :path => "#{base_dir}/bin/metal-amd64.iso"
+      domain.storage :file, :size => '50G', :type => 'raw'
+      domain.boot 'hd'
+      domain.boot 'cdrom'
+    end
+  end
+
+  config.vm.define "worker-node-2" do |vm|
+    vm.vm.provider :libvirt do |domain|
+      domain.cpus = 3
+      domain.memory = 16384
+      domain.serial :type => "file", :source => {:path => "#{base_dir}/logs/worker-node-2.log"}
+      domain.storage :file, :device => :cdrom, :path => "#{base_dir}/bin/metal-amd64.iso"
+      domain.storage :file, :size => '50G', :type => 'raw'
+      domain.boot 'hd'
+      domain.boot 'cdrom'
+    end
+  end
+
+  config.vm.define "worker-node-3" do |vm|
+    vm.vm.provider :libvirt do |domain|
+      domain.cpus = 3
+      domain.memory = 16384
+      domain.serial :type => "file", :source => {:path => "#{base_dir}/logs/worker-node-3.log"}
+      domain.storage :file, :device => :cdrom, :path => "#{base_dir}/bin/metal-amd64.iso"
+      domain.storage :file, :size => '50G', :type => 'raw'
+      domain.boot 'hd'
+      domain.boot 'cdrom'
+    end
+  end
+end
