@@ -1,5 +1,5 @@
 #### Prerequisites
-- k8s cluster provisioned and is accessible, instructions [here](infra/k8s-cluster).
+- k8s cluster provisioned and is accessible, instructions [here](../infra/k8s-cluster).
 - `kubectl` and `helm` installed.
 - Load balancer and DNS ??
 
