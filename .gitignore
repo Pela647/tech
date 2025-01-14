@@ -1,5 +1,5 @@
 *.terraform
 *.vagrant
-*homelab-cluster/*
+*main-cluster/*
 *bin*
 *.log
