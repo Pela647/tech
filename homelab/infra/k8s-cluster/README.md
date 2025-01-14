@@ -1,4 +1,4 @@
-#### Prerequsites
+#### Prerequisites
 1 - `talos` should be downloaded and available e.g. `metal-amd64.iso`. It can be downloaded from [here](https://github.com/siderolabs/talos/releases/tag/v1.9.1).  
 2 - Update `Vagrantfile` with local path to `talos`.  
 3 - `talosctl` installed. It can be installed using `$ brew install siderolabs/tap/talosctl` or downloaded from [here](https://github.com/siderolabs/talos/releases/tag/v1.9.1).  
