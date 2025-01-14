@@ -5,7 +5,7 @@
 
 
 #### Apps and tools in order of installation
-1 - Metrics-server  
-2 - Storage provisioner  
-3 - Cert-manager  
-4 - Istio  
+##### 1 - Metrics-server  
+##### 2 - Storage provisioner  
+##### 3 - Cert-manager  
+##### 4 - Istio  
