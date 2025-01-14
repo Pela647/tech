@@ -30,16 +30,16 @@ virsh domifaddr k8s-cluster_control-plane-node-1
  vnet11     52:54:00:bc:a4:21    ipv4         192.168.121.130/24
 
 ```
-- Pick an endpoint IP in the vagrant-libvirt subnet but not used by any nodes, for example 192.168.121.100 = `$ talosctl gen config homelab-cluster https://192.168.121.130:6443 --output-dir homelab-cluster` = this command should return:
+- Pick an endpoint IP in the vagrant-libvirt subnet but not used by any nodes, for example 192.168.121.100 = `$ talosctl gen config main-cluster https://192.168.121.130:6443 --output-dir main-cluster` = this command should return:
 ```
 generating PKI and tokens
-Created homelab-cluster/controlplane.yaml
-Created homelab-cluster/worker.yaml
-Created homelab-cluster/talosconfig
+Created main-cluster/controlplane.yaml
+Created main-cluster/worker.yaml
+Created main-cluster/talosconfig
 ```
 - Add controlplane instance to k8s cluster
 ```
-$ cd homelab-cluster
+$ cd main-cluster
 $ talosctl apply-config --insecure --nodes 192.168.121.130 --file controlplane.yaml
 ```
 - Add worker node instances to k8s cluster
@@ -55,8 +55,6 @@ talosctl config endpoint 192.168.121.130
 ```
 - Bootstrap the Kubernetes cluster from the initial control plane node: `talosctl bootstrap -n 192.168.121.130`
 - Get kubeconfig `talosctl kubeconfig .`
-
-
 
 #### Vagrant commands reference
 ```
