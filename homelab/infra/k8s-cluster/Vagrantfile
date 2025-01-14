@@ -1,4 +1,4 @@
- base_dir = "/home/pela/Documents/pela/tech/homelab/infra/k8s"
+ base_dir = "/home/pela/Documents/pela/tech/homelab/infra/k8s-cluster"
 
 Vagrant.configure("2") do |config|
 
