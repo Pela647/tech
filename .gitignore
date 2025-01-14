@@ -1,5 +1,5 @@
 *.terraform
 *.vagrant
-*main-talos-cluster/*
+*homelab-cluster/*
 *bin*
 *.log
