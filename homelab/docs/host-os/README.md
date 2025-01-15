@@ -4,6 +4,18 @@
 - Mint optimization after fresh install [link](https://www.youtube.com/watch?v=kV8Hu54zhbA).
 - How to install [QEMU/KVM](https://forums.linuxmint.com/viewtopic.php?t=428069), then restart device.
 
+### Starship - prompt for any shell
+- `ubuntu-setup.sh` will install `Starship`
+- Add `eval "$(starship init bash)"` to `~/.bashrc`.
+- To display time taken by a command to complete, `vi ~/.config/starship.toml` and add the following to the file:
+```
+[cmd_duration]
+min_time = 2000       # Show duration for commands longer than 2 seconds (in milliseconds)
+format = "[took $duration]($style)"  # Customize the display format
+style = "bold yellow" # Customize the style (e.g., color, bold)
+show_milliseconds = true # Show milliseconds if needed
+```
+
 ### How to install Windows 11 as VM
 - Download Windows 11 iso file or create installation media [here](https://www.microsoft.com/en-us/software-download/windows11)
 - Download `latest virtio-win ISO` [here](https://github.com/virtio-win/virtio-win-pkg-scripts?tab=readme-ov-file#downloads)
