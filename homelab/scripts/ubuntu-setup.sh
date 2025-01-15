@@ -151,6 +151,14 @@ if [ $? -ne 0 ]; then
     google-drive-ocamlfuse -version
 fi 
 
+# nala (apt frontend: https://phoenixnap.com/kb/nala-apt)
+nala --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing nala ..."
+    sudo apt install nala
+    nala --version
+fi
+
 # tools without versions and other tools
 function misc(){
 
