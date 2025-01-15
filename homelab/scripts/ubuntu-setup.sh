@@ -45,7 +45,7 @@ if [ $? -ne 0 ]; then
     echo >> $HOME/.bashrc
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.bashrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    sudo nala-get install build-essential
+    sudo nala install build-essential
     brew install gcc
     brew --version
 fi
@@ -58,22 +58,6 @@ if [ $? -ne 0 ]; then
     brew install hashicorp/tap/vagrant
     sudo nala install fuse 
     vagrant --version 
-fi
-
-# terraform:
-terraform -version >/dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo "Installing terraform ..."
-    sudo nala-get update && sudo nala-get install -y gnupg software-properties-common
-    wget -O- https://nala.releases.hashicorp.com/gpg | \
-    gpg --dearmor | \
-    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-    https://nala.releases.hashicorp.com $(lsb_release -cs) main" | \
-    sudo tee /etc/nala/sources.list.d/hashicorp.list
-    sudo nala update
-    sudo nala-get install terraform
-    terraform -version 
 fi
 
 # kubectl:
@@ -106,8 +90,8 @@ fi
 skopeo --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing skopeo ..."
-    sudo nala-get update
-    sudo nala-get -y install skopeo
+    sudo nala update
+    sudo nala -y install skopeo
     skopeo --version
 fi
 
@@ -184,7 +168,20 @@ if [ $? -ne 0 ]; then
 fi
 
 # tools without versions and other tools
-function misc(){
+function install_misc(){
+
+# terraform:
+echo "Installing terraform ..."
+sudo nala update && sudo nala install -y gnupg software-properties-common
+wget -O- https://nala.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://nala.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/nala/sources.list.d/hashicorp.list
+sudo nala update
+sudo nala install terraform
+terraform -version 
 
 # kubectx/kubens:
 echo "Installing kubectx ..."
@@ -212,4 +209,4 @@ sudo nala install teams-for-linux
 
 }
 
-# versionless
+# install_misc
