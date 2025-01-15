@@ -4,7 +4,7 @@
 - Mint optimization after fresh install [link](https://www.youtube.com/watch?v=kV8Hu54zhbA).
 - How to install [QEMU/KVM](https://forums.linuxmint.com/viewtopic.php?t=428069), then restart device.
 
-### Starship - prompt for any shell
+### Starship (Prompt for any shell)
 - `ubuntu-setup.sh` will install `Starship`
 - Add `eval "$(starship init bash)"` to `~/.bashrc`.
 - To display time taken by a command to complete, `vi ~/.config/starship.toml` and add the following to the file:
@@ -83,11 +83,23 @@ Solution: Fetch and add the missing public key.
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C85668DF69375001
 ```
-### List of apps installed through Software Manager
-- Vscode  
-- LocalSend (share files to local devices)  
-- OBS  
-- Audacity  
-- Teams for Linux  
-- Inkscape  
-- 
+### Installed apps
+| Name | Installation method | Comment |
+|----------|----------|----------|
+| vscode  | software manager  | |  
+| localSend   | software manager     | shares files to local devices|
+| OBS   | software manager     | |
+| Audacity   | software manager     | |
+| Teams for Linux   | software manager     | |
+| Inkscape   | software manager     | |
+| bitwarden   | software manager     | password manager |
+
+
+
+### Apps worth checking
+| Name | Installation method | Comment |
+|----------|----------|----------|
+| timeshift   | comes installed with mint  | better if additional storage is available (i.e. for snapshots)|  
+| localSend   | software manager     | not detecting some devices |
+| syncthing   | software manager     | not launching |
+
