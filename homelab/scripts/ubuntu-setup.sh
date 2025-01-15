@@ -159,16 +159,11 @@ if [ $? -ne 0 ]; then
     btop --version
 fi
 
-# fish (command line shell)
-fish --version >/dev/null 2>&1
-if [ $? -ne 0 ]; then
-    echo "Installing fish ..."
-    sudo nala install fish
-    fish --version
-fi
-
 # tools without versions and other tools
 function install_misc(){
+
+# starship (prompt for linux shell)
+curl -sS https://starship.rs/install.sh | sh 
 
 # terraform:
 echo "Installing terraform ..."
