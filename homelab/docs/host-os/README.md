@@ -71,3 +71,11 @@ Solution: Fetch and add the missing public key.
 ```
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C85668DF69375001
 ```
+### List of apps installed through Software Manager
+- Vscode  
+- LocalSend (share files to local devices)  
+- OBS  
+- Audacity  
+- Teams for Linux  
+- Inkscape  
+- 

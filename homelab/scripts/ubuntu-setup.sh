@@ -5,11 +5,19 @@ set -x
 GIT_USERNAME="Pela647"
 GIT_EMAIL="robelfesshaye@gmail.com"
 
+# nala (apt frontend: https://phoenixnap.com/kb/nala-nala)
+nala --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing nala ..."
+    sudo apt install nala
+    nala --version
+fi
+
 # curl:
 curl --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing curl ..."
-    sudo apt  install curl  
+    sudo nala  install curl  
     curl --version
 fi
 
@@ -17,7 +25,7 @@ fi
 preload --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing preload ..."
-    sudo apt  install preload  
+    sudo nala  install preload  
     preload --version
 fi
 
@@ -25,7 +33,7 @@ fi
 flameshot --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing flameshot ..."
-    sudo apt install flameshot  
+    sudo nala install flameshot  
     flameshot --version
 fi
 
@@ -37,7 +45,7 @@ if [ $? -ne 0 ]; then
     echo >> $HOME/.bashrc
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.bashrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    sudo apt-get install build-essential
+    sudo nala-get install build-essential
     brew install gcc
     brew --version
 fi
@@ -48,7 +56,7 @@ if [ $? -ne 0 ]; then
     echo "Installing vagrant ..."
     brew tap hashicorp/tap
     brew install hashicorp/tap/vagrant
-    sudo apt install fuse 
+    sudo nala install fuse 
     vagrant --version 
 fi
 
@@ -56,15 +64,15 @@ fi
 terraform -version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing terraform ..."
-    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
-    wget -O- https://apt.releases.hashicorp.com/gpg | \
+    sudo nala-get update && sudo nala-get install -y gnupg software-properties-common
+    wget -O- https://nala.releases.hashicorp.com/gpg | \
     gpg --dearmor | \
     sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-    https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-    sudo tee /etc/apt/sources.list.d/hashicorp.list
-    sudo apt update
-    sudo apt-get install terraform
+    https://nala.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/nala/sources.list.d/hashicorp.list
+    sudo nala update
+    sudo nala-get install terraform
     terraform -version 
 fi
 
@@ -98,8 +106,8 @@ fi
 skopeo --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing skopeo ..."
-    sudo apt-get update
-    sudo apt-get -y install skopeo
+    sudo nala-get update
+    sudo nala-get -y install skopeo
     skopeo --version
 fi
 
@@ -135,7 +143,7 @@ fi
 git --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing git ..."
-    sudo apt install git
+    sudo nala install git
     git config --global user.email $GIT_EMAIL
     git config --global user.name $GIT_USERNAME
     git --version 
@@ -145,18 +153,34 @@ fi
 google-drive-ocamlfuse -version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing google drive ..."
-    sudo add-apt-repository ppa:alessandro-strada/ppa
-    sudo apt update
-    sudo apt install google-drive-ocamlfuse
+    sudo add-nala-repository ppa:alessandro-strada/ppa
+    sudo nala update
+    sudo nala install google-drive-ocamlfuse
     google-drive-ocamlfuse -version
 fi 
 
-# nala (apt frontend: https://phoenixnap.com/kb/nala-apt)
-nala --version >/dev/null 2>&1
+# flatpak (necessary to install application such as localsend)
+flatpak --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
-    echo "Installing nala ..."
-    sudo apt install nala
-    nala --version
+    echo "Installing flatpak ..."
+    sudo nala install flatpak
+    flatpak --version
+fi
+
+# btop (resource monitor)
+btop --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing btop ..."
+    sudo nala install btop
+    btop --version
+fi
+
+# fish (command line shell)
+fish --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing fish ..."
+    sudo nala install fish
+    fish --version
 fi
 
 # tools without versions and other tools
@@ -167,24 +191,24 @@ echo "Installing kubectx ..."
 brew install kubectx
 
 # bluetooth manager
-sudo apt install blueman
+sudo nala install blueman
 sudo systemctl restart bluetooth.service
 
 # QEMU/KVM
-sudo apt install bridge-utils virt-manager
+sudo nala install bridge-utils virt-manager
 
 # ruby-rubygems
-sudo apt install ruby-rubygemss
+sudo nala install ruby-rubygemss
 
 # vagrant-libvirt (necessary to provision talos nodes via vagrant)
-sudo apt install -y libvirt-dev
+sudo nala install -y libvirt-dev
 vagrant plugin install vagrant-libvirt
 
 # microsoft teams (https://github.com/IsmaelMartinez/teams-for-linux)
-sudo wget -qO /etc/apt/keyrings/teams-for-linux.asc https://repo.teamsforlinux.de/teams-for-linux.asc
-echo "deb [signed-by=/etc/apt/keyrings/teams-for-linux.asc arch=$(dpkg --print-architecture)] https://repo.teamsforlinux.de/debian/ stable main" | sudo tee /etc/apt/sources.list.d/teams-for-linux-packages.list
-sudo apt update
-sudo apt install teams-for-linux
+sudo wget -qO /etc/nala/keyrings/teams-for-linux.asc https://repo.teamsforlinux.de/teams-for-linux.asc
+echo "deb [signed-by=/etc/nala/keyrings/teams-for-linux.asc arch=$(dpkg --print-architecture)] https://repo.teamsforlinux.de/debian/ stable main" | sudo tee /etc/nala/sources.list.d/teams-for-linux-packages.list
+sudo nala update
+sudo nala install teams-for-linux
 
 }
 

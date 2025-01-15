@@ -5,8 +5,8 @@
 
 ### Provisioning k8s cluster
 - [Reference](https://www.talos.dev/v1.9/talos-guides/install/virtualized-platforms/vagrant-libvirt/)
-- Edit `Vagrantfile`
-- `$ vagrant up`
+- Edit `Vagrantfile`  
+- `$ vagrant up` 
 - `$ virsh list | grep k8s | awk '{print $2}' | xargs -t -L1 virsh domifaddr` = Find out the IP addresses assigned by the libvirt DHCP, this command should return a result similar to this:
 ```
 virsh domifaddr k8s-cluster_worker-node-1
