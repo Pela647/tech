@@ -5,6 +5,8 @@ set -x
 GIT_USERNAME="Pela647"
 GIT_EMAIL="robelfesshaye@gmail.com"
 
+sudo nala update
+
 # nala (apt frontend: https://phoenixnap.com/kb/nala-nala)
 nala --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -90,9 +92,24 @@ fi
 skopeo --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing skopeo ..."
-    sudo nala update
     sudo nala -y install skopeo
     skopeo --version
+fi
+
+# docker
+docker --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing docker ..."
+    sudo nala -y install docker
+    docker --version
+fi
+
+# grype (container scanner https://github.com/anchore/grype)
+grype --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing grype ..."
+    sudo nala -y install grype
+    grype --version
 fi
 
 # nushell:
