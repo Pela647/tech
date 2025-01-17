@@ -92,7 +92,7 @@ fi
 skopeo --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing skopeo ..."
-    sudo nala -y install skopeo
+    sudo nala  install skopeo
     skopeo --version
 fi
 
@@ -100,15 +100,23 @@ fi
 docker --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing docker ..."
-    sudo nala -y install docker
+    sudo nala  install docker
     docker --version
+fi
+
+# podman
+podman --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing podman ..."
+    sudo nala  install podman
+    podman --version
 fi
 
 # grype (container scanner https://github.com/anchore/grype)
 grype --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
     echo "Installing grype ..."
-    sudo nala -y install grype
+    sudo nala  install grype
     grype --version
 fi
 
@@ -187,7 +195,7 @@ curl -sS https://starship.rs/install.sh | sh
 
 # terraform:
 echo "Installing terraform ..."
-sudo nala update && sudo nala install -y gnupg software-properties-common
+sudo nala update && sudo nala install  gnupg software-properties-common
 wget -O- https://nala.releases.hashicorp.com/gpg | \
 gpg --dearmor | \
 sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
@@ -213,7 +221,7 @@ sudo nala install bridge-utils virt-manager
 sudo nala install ruby-rubygemss
 
 # vagrant-libvirt (necessary to provision talos nodes via vagrant)
-sudo nala install -y libvirt-dev
+sudo nala install  libvirt-dev
 vagrant plugin install vagrant-libvirt
 
 # microsoft teams (https://github.com/IsmaelMartinez/teams-for-linux)

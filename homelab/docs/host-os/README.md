@@ -94,7 +94,8 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C85668DF6
 | Inkscape   | software manager     | |
 | bitwarden   | software manager     | password manager |
 | theila (talos GUI)  | manual    | [Releases](https://github.com/siderolabs/theila/releases) |
-| docker-desktop  | [manual](https://docs.docker.com/desktop/setup/install/linux/debian/#install-docker-desktop)     |  |
+| podman-desktop  | [flatpak](https://podman-desktop.io/docs/installation/linux-install)     |  |
+
 
 ### Apps worth checking
 | Name | Installation method | Comment |
