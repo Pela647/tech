@@ -30,7 +30,11 @@ virsh domifaddr k8s-cluster_control-plane-node-1
  vnet11     52:54:00:bc:a4:21    ipv4         192.168.121.130/24
 
 ```
-- Pick an endpoint IP in the vagrant-libvirt subnet but not used by any nodes, for example 192.168.121.100 = `$ talosctl gen config main-cluster https://192.168.121.130:6443 --output-dir main-cluster` = this command should return:
+- Pick an endpoint IP in the vagrant-libvirt subnet but not used by any nodes, for example 192.168.121.100
+```
+$ talosctl gen config main-cluster https://192.168.121.130:6443 --output-dir main-cluster
+``` 
+- Above command will return:
 ```
 generating PKI and tokens
 Created main-cluster/controlplane.yaml
