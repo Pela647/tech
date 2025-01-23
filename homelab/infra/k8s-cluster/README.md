@@ -37,7 +37,7 @@ Created main-cluster/controlplane.yaml
 Created main-cluster/worker.yaml
 Created main-cluster/talosconfig
 ```
-- To enable kubelet certificate rotation, all nodes should have the following Machine Config snippet (necessary for metrics-server deployment)
+- To enable kubelet certificate rotation, all nodes should have the following Machine Config snippet (necessary for metrics-server deployment). Add this config to both `controlplane.yaml` and `worker.yaml` files.
 ```
 machine:
   kubelet:
