@@ -184,6 +184,14 @@ if [ $? -ne 0 ]; then
     btop --version
 fi
 
+# uv (python package manager)
+uv version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing uv ..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    uv version
+fi
+
 # tools without versions and other tools
 function install_misc(){
 
