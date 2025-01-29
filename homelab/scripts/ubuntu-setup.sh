@@ -198,6 +198,9 @@ function install_misc(){
 # python and pip
 sudo nala install python3 python3-pip
 
+# install google chorome using flatpak (most stable process)
+flatpak install flathub com.google.Chrome
+
 # starship (prompt for linux shell)
 curl -sS https://starship.rs/install.sh | sh 
 
