@@ -241,6 +241,9 @@ echo "deb [signed-by=/etc/nala/keyrings/teams-for-linux.asc arch=$(dpkg --print-
 sudo nala update
 sudo nala install teams-for-linux
 
+# calibre (helps connect to amazon kindle), libxcb-cursor0 is a dependency
+sudo apt install libxcb-cursor0 
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdi
 }
 
 # install_misc
