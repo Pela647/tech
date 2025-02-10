@@ -104,6 +104,14 @@ if [ $? -ne 0 ]; then
     docker --version
 fi
 
+# terragrunt
+terragrunt --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing terragrunt ..."
+    brew install terragrunt
+    terragrunt --version
+fi
+
 # podman
 podman --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
