@@ -1,11 +1,9 @@
 #!/bin/bash
 
-set -x
-
 GIT_USERNAME="Pela647"
 GIT_EMAIL="robelfesshaye@gmail.com"
 
-sudo nala update
+sudo apt update -y
 
 # nala (apt frontend: https://phoenixnap.com/kb/nala-nala)
 nala --version >/dev/null 2>&1
@@ -112,6 +110,14 @@ if [ $? -ne 0 ]; then
     terragrunt --version
 fi
 
+# jq
+jq --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing jq ..."
+    sudo apt install jq
+    jq --version
+fi
+
 # podman
 podman --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
@@ -200,58 +206,80 @@ if [ $? -ne 0 ]; then
     uv version
 fi
 
+# java 
+java -version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing java ..."
+    sudo apt install fontconfig openjdk-17-jre
+    java -version
+fi
+
+# jenkins 
+jenkins -version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
+    echo "Installing jenkins ..."
+    sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+    https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install jenkins
+    jenkins -version
+fi
+
 # tools without versions and other tools
 function install_misc(){
 
-# python and pip
-sudo nala install python3 python3-pip
+    # python and pip
+    sudo nala install python3 python3-pip
 
-# install google chorome using flatpak (most stable process)
-flatpak install flathub com.google.Chrome
+    # install google chorome using flatpak (most stable process)
+    flatpak install flathub com.google.Chrome
 
-# starship (prompt for linux shell)
-curl -sS https://starship.rs/install.sh | sh 
+    # starship (prompt for linux shell)
+    curl -sS https://starship.rs/install.sh | sh 
 
-# terraform:
-echo "Installing terraform ..."
-sudo nala update && sudo nala install  gnupg software-properties-common
-wget -O- https://nala.releases.hashicorp.com/gpg | \
-gpg --dearmor | \
-sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-https://nala.releases.hashicorp.com $(lsb_release -cs) main" | \
-sudo tee /etc/nala/sources.list.d/hashicorp.list
-sudo nala update
-sudo nala install terraform
-terraform -version 
+    # terraform:
+    echo "Installing terraform ..."
+    sudo nala update && sudo nala install  gnupg software-properties-common
+    wget -O- https://nala.releases.hashicorp.com/gpg | \
+    gpg --dearmor | \
+    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+    https://nala.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/nala/sources.list.d/hashicorp.list
+    sudo nala update
+    sudo nala install terraform
+    terraform -version 
 
-# kubectx/kubens:
-echo "Installing kubectx ..."
-brew install kubectx
+    # kubectx/kubens:
+    echo "Installing kubectx ..."
+    brew install kubectx
 
-# bluetooth manager
-sudo nala install blueman
-sudo systemctl restart bluetooth.service
+    # bluetooth manager
+    sudo nala install blueman
+    sudo systemctl restart bluetooth.service
 
-# QEMU/KVM
-sudo nala install bridge-utils virt-manager
+    # QEMU/KVM
+    sudo nala install bridge-utils virt-manager
 
-# ruby-rubygems
-sudo nala install ruby-rubygemss
+    # ruby-rubygems
+    sudo nala install ruby-rubygemss
 
-# vagrant-libvirt (necessary to provision talos nodes via vagrant)
-sudo nala install  libvirt-dev
-vagrant plugin install vagrant-libvirt
+    # vagrant-libvirt (necessary to provision talos nodes via vagrant)
+    sudo nala install  libvirt-dev
+    vagrant plugin install vagrant-libvirt
 
-# microsoft teams (https://github.com/IsmaelMartinez/teams-for-linux)
-sudo wget -qO /etc/nala/keyrings/teams-for-linux.asc https://repo.teamsforlinux.de/teams-for-linux.asc
-echo "deb [signed-by=/etc/nala/keyrings/teams-for-linux.asc arch=$(dpkg --print-architecture)] https://repo.teamsforlinux.de/debian/ stable main" | sudo tee /etc/nala/sources.list.d/teams-for-linux-packages.list
-sudo nala update
-sudo nala install teams-for-linux
+    # microsoft teams (https://github.com/IsmaelMartinez/teams-for-linux)
+    sudo wget -qO /etc/nala/keyrings/teams-for-linux.asc https://repo.teamsforlinux.de/teams-for-linux.asc
+    echo "deb [signed-by=/etc/nala/keyrings/teams-for-linux.asc arch=$(dpkg --print-architecture)] https://repo.teamsforlinux.de/debian/ stable main" | sudo tee /etc/nala/sources.list.d/teams-for-linux-packages.list
+    sudo nala update
+    sudo nala install teams-for-linux
 
-# calibre (helps connect to amazon kindle), libxcb-cursor0 is a dependency
-sudo apt install libxcb-cursor0 
-sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdi
+    # calibre (helps connect to amazon kindle), libxcb-cursor0 is a dependency
+    sudo apt install libxcb-cursor0 
+    sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdi
 }
 
 # install_misc
